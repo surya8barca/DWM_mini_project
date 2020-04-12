@@ -21,7 +21,7 @@ plt.figure(figsize=(20,20))
 db=pd.read_csv('datasets/USA_Housing.csv')
 #user input dataset(the column value to be predicted must be the last column)
 
-
+print('finish')
 # In[83]:
 
 

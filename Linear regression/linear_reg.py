@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[3]:
 
 
 import pandas as pd
@@ -14,36 +14,39 @@ plt.figure(figsize=(20,20))
 #libraries
 
 
-# In[80]:
+# In[4]:
 
 
 #load dataset and save as db
 db=pd.read_csv('datasets/USA_Housing.csv')
 #user input dataset(the column value to be predicted must be the last column)
 
-print('finish')
-# In[83]:
+
+# In[2]:
 
 
-name='USA_Housing'
+name=input()
 #specify the name of the dataset
 
 
-# In[88]:
+# In[5]:
 
 
 import os
 path='F:/Study Material/College Study/Sem 6/DWM/Mini Project/DWM_mini_project/Linear regression/'+name
+parent_file='F:/Study Material/College Study/Sem 6/DWM/Mini Project/DWM_mini_project/Linear regression'
 os.mkdir(path)
+#creates a new folder with the given name
 
 
-# In[89]:
+# In[6]:
 
 
 os.chdir(path)
+#moves to that file for saving the outputs
 
 
-# In[90]:
+# In[7]:
 
 
 db.head()
@@ -51,26 +54,26 @@ db.head()
 db.to_csv('top5_rows.csv')
 
 
-# In[91]:
+# In[8]:
 
 
 db.describe().columns #gives all the interger columns
 
 
-# In[92]:
+# In[9]:
 
 
 newdb=db[db.describe().columns] 
 #creates a new database with only columns having integer values
 
 
-# In[93]:
+# In[10]:
 
 
 newdb.head()
 
 
-# In[94]:
+# In[11]:
 
 
 sns.pairplot(newdb)
@@ -78,7 +81,7 @@ sns.pairplot(newdb)
 plt.savefig('pair_plot_dataset')
 
 
-# In[95]:
+# In[12]:
 
 
 newdb.hist()
@@ -86,7 +89,7 @@ newdb.hist()
 plt.savefig('histogram_dataset')
 
 
-# In[96]:
+# In[13]:
 
 
 newdb.plot.area()
@@ -94,7 +97,7 @@ newdb.plot.area()
 plt.savefig('area_plot_dataset')
 
 
-# In[97]:
+# In[14]:
 
 
 newdb.plot.line()
@@ -102,81 +105,81 @@ newdb.plot.line()
 plt.savefig('line_plot_dataset')
 
 
-# In[98]:
+# In[15]:
 
 
 newdb.columns
 
 
-# In[99]:
+# In[16]:
 
 
 y=newdb[newdb.columns[-1]] #assigns last columm of the dataset to y variable for prediction
 
 
-# In[100]:
+# In[17]:
 
 
 y.head()
 
 
-# In[101]:
+# In[18]:
 
 
 x=newdb[newdb.columns[:-1]]
 #assigns all columns except the last one to the x variable
 
 
-# In[102]:
+# In[19]:
 
 
 x.head()
 
 
-# In[103]:
+# In[20]:
 
 
 from sklearn.model_selection import train_test_split
 
 
-# In[104]:
+# In[21]:
 
 
 x_train,x_test,y_train,y_test=train_test_split(x,y)
 
 
-# In[105]:
+# In[22]:
 
 
 model=LinearRegression()
 
 
-# In[106]:
+# In[23]:
 
 
 model.fit(x_train,y_train)
 
 
-# In[107]:
+# In[24]:
 
 
 pred=model.predict(x_test)
 
 
-# In[108]:
+# In[25]:
 
 
 pred[:6]
 #predictions of top 6 values in table
 
 
-# In[109]:
+# In[26]:
 
 
 from sklearn import metrics
 
 
-# In[110]:
+# In[27]:
 
 
 sns.lineplot(y_test,pred)
@@ -184,35 +187,48 @@ sns.lineplot(y_test,pred)
 plt.savefig('lineplot_result')
 
 
-# In[111]:
+# In[28]:
 
 
 sns.regplot(y_test,pred)
 plt.savefig('regression_plot_result')
 
 
-# In[112]:
+# In[29]:
 
 
 model.score(x,y)*100
 #this is the accuracy percentage for this datatset accoring to our model
 
 
-# In[113]:
+# In[30]:
 
 
 import joblib
 
 
-# In[114]:
+# In[31]:
 
 
 joblib.dump(model,'general_model.sav')
 #saves in general model file
 
 
-# In[ ]:
+# In[32]:
 
 
 #model complete
+
+
+# In[33]:
+
+
+os.chdir(parent_file)
+#comes back to parent directory
+
+
+# In[ ]:
+
+
+
 

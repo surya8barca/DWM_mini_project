@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[30]:
+# In[1]:
 
 
 import pandas as pd
@@ -14,163 +14,176 @@ plt.figure(figsize=(20,20))
 #libraries
 
 
-# In[237]:
+# In[2]:
 
 
 #load dataset and save as db
-db=pd.read_csv('datasets/Real estate.csv')
+db=pd.read_csv('datasets/USA_Housing.csv')
 #user input dataset(the column value to be predicted must be the last column)
 
 
-# In[239]:
+# In[3]:
 
 
 db.head()
 #gives the top 5 values of all coumns (needs to be there on as output)
 
 
-# In[232]:
+# In[4]:
 
 
 db.describe().columns #gives all the interger columns
 
 
-# In[240]:
+# In[5]:
 
 
 newdb=db[db.describe().columns] 
 #creates a new database with only columns having integer values
 
 
-# In[242]:
+# In[6]:
 
 
 newdb.head()
 
 
-# In[244]:
+# In[7]:
 
 
 sns.pairplot(newdb)
 #this needs to be out as data analysis of the dataset along with a few more graphs
 
 
-# In[246]:
+# In[8]:
 
 
 newdb.hist()
 #another graph
 
 
-# In[249]:
+# In[9]:
 
 
 newdb.plot.area()
 #another graph
 
 
-# In[250]:
+# In[10]:
 
 
 newdb.plot.line()
 #graph4
 
 
-# In[252]:
+# In[11]:
 
 
 newdb.columns
 
 
-# In[253]:
+# In[12]:
 
 
 y=newdb[newdb.columns[-1]] #assigns last columm of the dataset to y variable for prediction
 
 
-# In[254]:
+# In[13]:
 
 
 y.head()
 
 
-# In[256]:
+# In[14]:
 
 
 x=newdb[newdb.columns[:-1]]
 #assigns all columns except the last one to the x variable
 
 
-# In[257]:
+# In[15]:
 
 
 x.head()
 
 
-# In[258]:
+# In[16]:
 
 
 from sklearn.model_selection import train_test_split
 
 
-# In[259]:
+# In[17]:
 
 
 x_train,x_test,y_train,y_test=train_test_split(x,y)
 
 
-# In[260]:
+# In[18]:
 
 
 model=LinearRegression()
 
 
-# In[261]:
+# In[19]:
 
 
 model.fit(x_train,y_train)
 
 
-# In[263]:
+# In[20]:
 
 
 pred=model.predict(x_test)
 
 
-# In[266]:
+# In[21]:
 
 
 pred[:6]
 #predictions of top 6 values in table
 
 
-# In[267]:
+# In[22]:
 
 
 from sklearn import metrics
 
 
-# In[268]:
+# In[24]:
 
 
 sns.lineplot(y_test,pred)
 #to play the relation between the prediction and the actual values
 
 
-# In[269]:
+# In[37]:
+
+
+plt.plot(y_test,pred,'.')
+
+
+# In[48]:
+
+
+fig=sns.regplot(y_test,pred)
+plt.savefig('')
+
+
+# In[44]:
 
 
 model.score(x,y)*100
 #this is the accuracy percentage for this datatset accoring to our model
 
 
-# In[270]:
+# In[26]:
 
 
 import joblib
 
 
-# In[271]:
+# In[27]:
 
 
 joblib.dump(model,'general_model.sav')

@@ -14,7 +14,7 @@ plt.figure(figsize=(20,20))
 #libraries
 
 
-# In[2]:
+# In[80]:
 
 
 #load dataset and save as db
@@ -22,168 +22,189 @@ db=pd.read_csv('datasets/USA_Housing.csv')
 #user input dataset(the column value to be predicted must be the last column)
 
 
-# In[3]:
+# In[83]:
+
+
+name='USA_Housing'
+#specify the name of the dataset
+
+
+# In[88]:
+
+
+import os
+path='F:/Study Material/College Study/Sem 6/DWM/Mini Project/DWM_mini_project/Linear regression/'+name
+os.mkdir(path)
+
+
+# In[89]:
+
+
+os.chdir(path)
+
+
+# In[90]:
 
 
 db.head()
 #gives the top 5 values of all coumns (needs to be there on as output)
+db.to_csv('top5_rows.csv')
 
 
-# In[4]:
+# In[91]:
 
 
 db.describe().columns #gives all the interger columns
 
 
-# In[5]:
+# In[92]:
 
 
 newdb=db[db.describe().columns] 
 #creates a new database with only columns having integer values
 
 
-# In[6]:
+# In[93]:
 
 
 newdb.head()
 
 
-# In[7]:
+# In[94]:
 
 
 sns.pairplot(newdb)
 #this needs to be out as data analysis of the dataset along with a few more graphs
+plt.savefig('pair_plot_dataset')
 
 
-# In[8]:
+# In[95]:
 
 
 newdb.hist()
 #another graph
+plt.savefig('histogram_dataset')
 
 
-# In[9]:
+# In[96]:
 
 
 newdb.plot.area()
 #another graph
+plt.savefig('area_plot_dataset')
 
 
-# In[10]:
+# In[97]:
 
 
 newdb.plot.line()
 #graph4
+plt.savefig('line_plot_dataset')
 
 
-# In[11]:
+# In[98]:
 
 
 newdb.columns
 
 
-# In[12]:
+# In[99]:
 
 
 y=newdb[newdb.columns[-1]] #assigns last columm of the dataset to y variable for prediction
 
 
-# In[13]:
+# In[100]:
 
 
 y.head()
 
 
-# In[14]:
+# In[101]:
 
 
 x=newdb[newdb.columns[:-1]]
 #assigns all columns except the last one to the x variable
 
 
-# In[15]:
+# In[102]:
 
 
 x.head()
 
 
-# In[16]:
+# In[103]:
 
 
 from sklearn.model_selection import train_test_split
 
 
-# In[17]:
+# In[104]:
 
 
 x_train,x_test,y_train,y_test=train_test_split(x,y)
 
 
-# In[18]:
+# In[105]:
 
 
 model=LinearRegression()
 
 
-# In[19]:
+# In[106]:
 
 
 model.fit(x_train,y_train)
 
 
-# In[20]:
+# In[107]:
 
 
 pred=model.predict(x_test)
 
 
-# In[21]:
+# In[108]:
 
 
 pred[:6]
 #predictions of top 6 values in table
 
 
-# In[22]:
+# In[109]:
 
 
 from sklearn import metrics
 
 
-# In[24]:
+# In[110]:
 
 
 sns.lineplot(y_test,pred)
 #to play the relation between the prediction and the actual values
+plt.savefig('lineplot_result')
 
 
-# In[37]:
+# In[111]:
 
 
-plt.plot(y_test,pred,'.')
+sns.regplot(y_test,pred)
+plt.savefig('regression_plot_result')
 
 
-# In[48]:
-
-
-fig=sns.regplot(y_test,pred)
-plt.savefig('')
-
-
-# In[44]:
+# In[112]:
 
 
 model.score(x,y)*100
 #this is the accuracy percentage for this datatset accoring to our model
 
 
-# In[26]:
+# In[113]:
 
 
 import joblib
 
 
-# In[27]:
+# In[114]:
 
 
 joblib.dump(model,'general_model.sav')

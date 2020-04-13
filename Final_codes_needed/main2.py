@@ -3,6 +3,7 @@ import os
 from werkzeug.utils import secure_filename
 from flask_bootstrap import Bootstrap 
 import pathlib
+from sklearn import tree
 
 app = Flask(__name__)  
 Bootstrap(app)
@@ -71,7 +72,17 @@ def mlcode(dataset):
 
     plt.savefig('mytable.png',bbox_inches='tight')
 
-    
+    #Decision tree classifier
+    from sklearn.tree import DecisionTreeClassifier
+    clf = DecisionTreeClassifier(max_depth=3)
+
+# Train Decision Tree Classifer
+    clf = clf.fit(x_train,y_train)
+
+#Predict the response for test dataset
+    y_pred = clf.predict(x_test)
+    tree.plot_tree(clf.fit(x, y))
+    plt.savefig('tree')
     os.chdir(parent_file)
 
 
@@ -97,8 +108,8 @@ def detect():
                 weightsimg='/static/'+filename+'/mytable.png'
                 accuracy,mae,mse,rmse=mlcode(filename)
                 pathtoplt='/static/'+filename+'/regression_plot_result.png'
-
-                return render_template('results.html',accuracy=accuracy,plot=pathtoplt,weightsimg=weightsimg,mae=mae,mse=mse,rmse=rmse)
+                tree='/static/'+filename+'/tree.png'
+                return render_template('results.html',tree=tree,accuracy=accuracy,plot=pathtoplt,weightsimg=weightsimg,mae=mae,mse=mse,rmse=rmse)
                 # return jsonify({"path":pathtoplt}),200
 
     

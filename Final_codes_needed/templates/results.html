@@ -17,10 +17,15 @@
     <div class="card-body" style="background-color:#1daeff;">
       <h5 class="card-title">Gender Classifier</h5>
       <hr/>
+
       <p class="card-text"><div class="alert alert-danger" role="alert">
+        <p>Mean Absolute Error: {{mae}}</p>
+        <p>Mean Squared Error : {{mse}}</p>
+        <p>Root Mean Squared Error: {{rmse}}</p>
+        <img src={{weightsimg}} alt="">
+
          <img src={{plot}} alt="">
     {{ accuracy }}
-    {{plot}}
   </div></p>
   {% endblock %}
 

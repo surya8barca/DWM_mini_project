@@ -1,0 +1,29 @@
+{% extends "bootstrap/base.html" %}
+{% block content %}
+
+
+
+<div class="container">
+  <div class="jumbotron" style="background-color:#1daeff !important;">
+    <h2 style="color:#fff;">Gender Classifier</h2>      
+    <p style="color:#fff;">Using Machine Learning to Classify Gender</p>
+  </div>
+  <p>ML App.</p>           
+</div>
+<div class="card text-center">
+    <div class="card-header">
+      Results
+    </div>
+    <div class="card-body" style="background-color:#1daeff;">
+      <h5 class="card-title">Gender Classifier</h5>
+      <hr/>
+      <p class="card-text"><div class="alert alert-danger" role="alert">
+         <img src={{plot}} alt="">
+    {{ accuracy }}
+    {{plot}}
+  </div></p>
+  {% endblock %}
+
+{% block styles %}
+{{super()}} <!-- Allows Javascripts and other styles to be inclusive in bootstrap -->
+{% endblock %}

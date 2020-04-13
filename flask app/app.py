@@ -21,9 +21,32 @@ from sklearn.externals import joblib
 app = Flask(__name__)
 Bootstrap(app)
 
-
 @app.route('/')
 def index():
+	return render_template('index.html')
+# @app.route('/')
+# def index():
+# 	db=pd.read_csv('datasets/Fish.csv')
+# 	newdb=db[db.describe().columns]
+# 	y=newdb[newdb.columns[-1]]
+# 	x=newdb[newdb.columns[:-1]]
+    
+# 	x_train,x_test,y_train,y_test=train_test_split(x,y)
+	
+# 	model=LinearRegression()
+# 	#clf=joblib.load(model)
+# 	model.fit(x_train,y_train)
+# 	pred=model.predict(x_test)
+# 	score=model.score(x,y)*100
+# 	plt=sns.pairplot(newdb)
+# 	plt.savefig('static/images/new_plot.png')
+# 	plx=sns.regplot(y_test,pred)
+# 	fig=plx.get_figure()
+# 	fig.savefig("static/images/output.png")
+# 	return render_template('results1.html',prediction = pred,plot='/static/images/output.png',score=score)
+
+@app.route('/predict', methods=['POST'])
+def predict():
 	db=pd.read_csv('datasets/Fish.csv')
 	newdb=db[db.describe().columns]
 	y=newdb[newdb.columns[-1]]
@@ -42,25 +65,6 @@ def index():
 	fig=plx.get_figure()
 	fig.savefig("static/images/output.png")
 	return render_template('results1.html',prediction = pred,plot='/static/images/output.png',score=score)
-
-@app.route('/predict', methods=['POST'])
-def predict():
-	db=pd.read_csv('datasets/Real estate.csv')
-	newdb=db[db.describe().columns]
-	y=newdb[newdb.columns[-1]]
-	x=newdb[newdb.columns[:-1]]
-    
-	x_train,x_test,y_train,y_test=train_test_split(x,y)
-	
-	model=LinearRegression()
-	clf=joblib.load(model)
-	clf.fit(x_train,y_train)
-	pred=clf.predict(x_test)
-	score=clf.score(x,y)*100
-	# Receives the input query from form
-	if request.method == 'POST':
-		plt=sns.lineplot(y_test,pred)
-	return render_template('results1.html',prediction = pred,plot=plt,score=score)
 
 
 if __name__ == '__main__':

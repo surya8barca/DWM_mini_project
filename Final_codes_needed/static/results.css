@@ -1,0 +1,131 @@
+#header{
+    padding: 5px;
+    height: 450px;
+    position: relative;
+}
+
+#header h1,h2{
+    font-size: 60px;
+    text-align: center;
+    text-decoration: underline;
+    color:white;
+}
+
+#stats{
+    width: 800px;
+    padding: 10px;
+    border-radius: 40px;
+    margin: auto;
+    height: 350px;
+    position: relative;
+    background-color: cyan;
+}
+
+#stats h2{
+    text-decoration: underline;
+    text-align: center;
+    color: black;
+    font-size: 35px;
+}
+#stats p{
+    text-align: center;
+    color: black;
+    font-size: 25px;
+}
+
+#analysis{
+    padding: 10px;
+    border-radius: 40px;
+    margin: auto;
+    height: 4000px;
+    position: relative;
+    background-color: cyan;
+}
+
+#analysis h2{
+    text-decoration: underline;
+    text-align: center;
+    color: black;
+    font-size: 60px;
+}
+#analysis p{
+    text-align: center;
+    color: black;
+    font-size: 25px;
+}
+
+#analysis img{
+    margin: auto;
+    padding: 5px;
+    height: 600px;
+    width: 1000px;
+    border-radius: 20px;
+    border-style: solid;
+    border-color: black;
+}
+
+#results{
+    padding: 10px;
+    border-radius: 40px;
+    margin: auto;
+    height: 2400px;
+    position: relative;
+    background-color: cyan;
+}
+
+#results h2{
+    text-decoration: underline;
+    text-align: center;
+    color: black;
+    font-size: 60px;
+}
+
+#results p{
+    text-align: center;
+    color: black;
+    font-size: 25px;
+}
+
+#results img{
+    margin: auto;
+    padding: 5px;
+    height: 600px;
+    width: 1000px;
+    border-radius: 20px;
+    border-style: solid;
+    border-color: black;
+}
+
+#download{
+    padding: 10px;
+    border-radius: 40px;
+    margin: auto;
+    height: 150px;
+    width: 600px;
+    position: relative;
+    background-color: cyan;
+}
+
+#download h2{
+    text-decoration: underline;
+    text-align: center;
+    color: black;
+    font-size: 20px;
+}
+
+#download button{
+    display: inline-block;
+  padding: 10px;
+  width: 300px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: black;
+  background-color: blue;
+  border: none;
+  border-radius: 15px;
+}
+
+

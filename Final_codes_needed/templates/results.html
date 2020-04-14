@@ -1,57 +1,116 @@
 {% extends "bootstrap/base.html" %}
 {% block content %}
 
+<body style=  "background-color: black; 
+background-repeat: no-repeat;
+background-attachment: fixed;
+background-size: 100% 100%;
+font-family:'Times New Roman', Times, serif;">
+<h1 style="color: White;
+font-family: 'Times New Roman', Times, serif;
+text-align: center; font-size: 50px; background: green; margin-top: 2px;">Gender Classifier</h1>      
+    <p style="color: White;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center; font-size: 20px; background: green;margin-top: -10px;">Using Machine Learning to Classify Gender</p>
 
-
-<div class="container">
-  <div class="jumbotron" style="background-color:#1daeff !important;">
-    <h2 style="color:#fff;">Gender Classifier</h2>      
-    <p style="color:#fff;">Using Machine Learning to Classify Gender</p>
-  </div>
-  <p>ML App.</p>           
-</div>
 <div class="card text-center">
-    <div class="card-header">
-      Results
-    </div>
-    <div class="card-body" style="background-color:#1daeff;">
-      <h5 class="card-title">Gender Classifier</h5>
-      <hr/>
+    <div class="card-body" style="margin-bottom: 30px;">
 
-      <p class="card-text"><div class="alert alert-danger" role="alert">
+      <p class="card-text"><div class="alert alert-danger" role="alert" style=  "background-color: white; 
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: 100% 100%;
+        font-family:'Times New Roman', Times, serif; margin-left: 100px; margin-right: 100px;">
         
-        <h2>Statistical Values for the model</h2>
+        <div class="container" style="background-color: green;
+        color: white;
+        font-family: 'Times New Roman', Times, serif;
+        text-align: center;
+        border: none;
+        padding: 20px;
+        width: 700px;
+        height: 270px;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 20px;
+        margin: 0px 0px;
+        border-radius: 12px;
+        margin-left: -10px;">
+        <h2 style="text-decoration: underline; ">Statistical Values for the model</h2>
         <p>Accuracy of the model: {{accuracy}}</p>
         <p>Mean Absolute Error: {{mae}}</p>
         <p>Mean Squared Error : {{mse}}</p>
         <p>Root Mean Squared Error: {{rmse}}</p>
         <br>
-        <h2>Dataset analysis</h2>
-        <p>Weights Table</p>
-        <img src={{weightsimg}} alt="weights table">
-        <p>Pair Plots</p>
-        <img src={{pairplot}} alt="pair plot">
-        <p>Area Plot</p>
-        <img src={{areaplot}} alt="area plot">
-        <p>Histogram</p>
-        <img src={{histogram}} alt="histogram">
-        <p>Line Plot</p>
-        <img src={{lineplot}} alt="Lineplot">
+        </div>
+
+
+        <h2 style="color: black;
+        font-family: 'Times New Roman', Times, serif;
+        text-align: center; font-size: 25px; font-weight: bold; text-decoration: underline; margin-bottom: 20px;">Dataset analysis</h2>
+        <p style="color: black;
+        font-family: 'Times New Roman', Times, serif;
+        text-align: center; font-size: 20px; font-weight: bold; ">Weights Table</p>
         <br>
-        <h2>Results of Linear Regression</h2>
-        <p>Regression Plot</p>
-         <img src={{reg_plot}} alt="regression plot">
-         <p>Line Plot</p>
-         <img src={{lineplot_result}} alt="">
-         <p>Tree</p>
-         <img src="{{tree}}" alt="">
+        <img style="width: 640px; height: 500px; width: 650px;
+        border: 1px solid black;" src={{weightsimg}} alt="weights table">
+        <br>
+        <br>
+        <p style="color: black;
+        font-family: 'Times New Roman', Times, serif;
+        text-align: center; font-size: 20px; font-weight: bold;">Pair Plots</p>
+        <br>
+        <img style="width: 640px; height: 500px; border: 1px solid black;" src={{pairplot}} alt="pair plot">
+        <br><br>
+        <p style="color: black;
+        font-family: 'Times New Roman', Times, serif;
+        text-align: center; font-size: 20px; font-weight: bold;">Area Plot</p>
+        <br>
+        <img style="border: 1px solid black;" src={{areaplot}} alt="area plot">
+        <br><br>
+        <p style="color: black;
+        font-family: 'Times New Roman', Times, serif;
+        text-align: center; font-size: 20px; font-weight: bold;">Histogram</p>
+        <br>
+        <img style="border: 1px solid black;" src={{histogram}} alt="histogram">
+        <br><br>
+        <p style="color: black;
+        font-family: 'Times New Roman', Times, serif;
+        text-align: center; font-size: 20px; font-weight: bold;">Line Plot</p>
+        <br>
+        <img style="border: 1px solid black;" src={{lineplot}} alt="Lineplot">
+        <br><br>
+        <h2 style="color: black;
+        font-family: 'Times New Roman', Times, serif;
+        text-align: center; font-size: 25px; font-weight: bold; text-decoration: underline; margin-bottom: 10px;">Results of Linear Regression</h2>
+        <br>
+        <p style="color: black;
+        font-family: 'Times New Roman', Times, serif;
+        text-align: center; font-size: 20px; font-weight: bold;">Regression Plot</p>
+        <br>
+        <img style="border: 1px solid black;" src={{reg_plot}} alt="regression plot">
+        <br><br>
+        <p style="color: black;
+         font-family: 'Times New Roman', Times, serif;
+         text-align: center; font-size: 20px; font-weight: bold;">Line Plot</p>
          <br>
-         <h2>Download your model file</h2>
-         <a href="{{model_file}}" download>Download Model</a>
+         <img style="border: 1px solid black;" src={{lineplot_result}} alt="">
+         <br><br>
+         <p style="color: black;
+         font-family: 'Times New Roman', Times, serif;
+         text-align: center; font-size: 20px; font-weight: bold;">Tree</p>
+         <br>
+         <img style="border: 1px solid black;" src="{{tree}}" alt="">
+         <br><br>
+         <h2 style="color: black;
+         font-family: 'Times New Roman', Times, serif;
+         text-align: center; font-size: 20px; font-weight: bold;">Download your model file below</h2>
+         <a style="color: black;
+         font-family: 'Times New Roman', Times, serif;
+         text-align: center; font-size: 20px;" href="{{model_file}}" download><button>Download Model</button></a>
          <br>
   </div></p>
-  {% endblock %}
 
-{% block styles %}
-{{super()}} <!-- Allows Javascripts and other styles to be inclusive in bootstrap -->
+</body>
+
 {% endblock %}

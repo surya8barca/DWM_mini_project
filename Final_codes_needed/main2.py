@@ -3,7 +3,7 @@ import os
 from werkzeug.utils import secure_filename
 from flask_bootstrap import Bootstrap 
 import pathlib
-from sklearn import tree
+
 
 app = Flask(__name__)  
 Bootstrap(app)
@@ -19,6 +19,7 @@ def mlcode(dataset):
     import numpy as np
     import matplotlib.pyplot as plt
     import seaborn as sns
+    from sklearn import tree
     from sklearn.linear_model import LinearRegression
     plt.figure(figsize=(20,20))
     db=pd.read_csv('datasets/'+dataset)
@@ -74,15 +75,15 @@ def mlcode(dataset):
 
     #Decision tree classifier
     from sklearn.tree import DecisionTreeClassifier
-    clf = DecisionTreeClassifier(max_depth=3)
+    #clf = DecisionTreeClassifier(max_depth=3)
 
 # Train Decision Tree Classifer
-    clf = clf.fit(x_train,y_train)
+    #clf = clf.fit(x_train,y_train)
 
 #Predict the response for test dataset
-    y_pred = clf.predict(x_test)
-    tree.plot_tree(clf.fit(x, y))
-    plt.savefig('tree')
+    #y_pred = clf.predict(x_test)
+    #tree.plot_tree(clf.fit(x, y))
+    #plt.savefig('tree')
     os.chdir(parent_file)
 
 
@@ -105,11 +106,18 @@ def detect():
                 # create the folders when setting up your app
                 path = os.path.join(pathlib.Path().absolute(), 'datasets', filename)
                 file.save(path)
-                weightsimg='/static/'+filename+'/mytable.png'
                 accuracy,mae,mse,rmse=mlcode(filename)
-                pathtoplt='/static/'+filename+'/regression_plot_result.png'
-                tree='/static/'+filename+'/tree.png'
-                return render_template('results.html',tree=tree,accuracy=accuracy,plot=pathtoplt,weightsimg=weightsimg,mae=mae,mse=mse,rmse=rmse)
+                #data analysis
+                pairplot='/static/'+filename+'/pair_plot_dataset.png'
+                areaplot='/static/'+filename+'/area_plot_dataset.png'
+                histogram='/static/'+filename+'/histogram_dataset.png'
+                lineplot='/static/'+filename+'/line_plot_dataset.png'
+                weightsimg='/static/'+filename+'/mytable.png'
+                #results
+                reg_plot='/static/'+filename+'/regression_plot_result.png'
+                lineplot_result='/static/'+filename+'/lineplot_result.png'
+               # tree='/static/'+filename+'/tree.png'
+                return render_template('results.html',accuracy=accuracy,lineplot=lineplot,histogram=histogram,pairplot=pairplot,areaplot=areaplot,lineplot_result=lineplot_result,reg_plot=reg_plot,weightsimg=weightsimg,mae=mae,mse=mse,rmse=rmse)
                 # return jsonify({"path":pathtoplt}),200
 
     

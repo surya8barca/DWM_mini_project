@@ -19,14 +19,31 @@
       <hr/>
 
       <p class="card-text"><div class="alert alert-danger" role="alert">
+        
+        <h2>Statistical Values for the model</h2>
+        <p>Accuracy of the model: {{accuracy}}</p>
         <p>Mean Absolute Error: {{mae}}</p>
         <p>Mean Squared Error : {{mse}}</p>
         <p>Root Mean Squared Error: {{rmse}}</p>
-        <img src={{weightsimg}} alt="">
-
-         <img src={{plot}} alt="">
-         <img src="{{tree}}" alt="">
-    {{ accuracy }}
+        <br>
+        <h2>Dataset analysis</h2>
+        <p>Weights Table</p>
+        <img src={{weightsimg}} alt="weights table">
+        <p>Pair Plots</p>
+        <img src={{pairplot}} alt="pair plot">
+        <p>Area Plot</p>
+        <img src={{areaplot}} alt="area plot">
+        <p>Histogram</p>
+        <img src={{histogram}} alt="histogram">
+        <p>Line Plot</p>
+        <img src={{lineplot}} alt="Lineplot">
+        <br>
+        <h2>Results of Linear Regression</h2>
+        <p>Regression Plot</p>
+         <img src={{reg_plot}} alt="regression plot">
+         <p>Line Plot</p>
+         <img src={{lineplot_result}} alt="">
+         <!--<img src="{{tree}}" alt="">-->
   </div></p>
   {% endblock %}
 

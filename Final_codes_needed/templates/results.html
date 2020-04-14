@@ -1,8 +1,8 @@
 {% extends "bootstrap/base.html" %}
 {% block content %}
 
-<link rel="stylesheet" href="/Final_codes_needed/static/results.css">
-<body style="background-image: url({{url_for('static',filename='/img/back.jpg')}})"> 
+<link rel="stylesheet" href="{{url_for('static',filename='results.css')}}">
+<body style="background-image: url({{url_for('static',filename='img/back.jpg')}})"> 
 
   <div id="header">
     <h1>Dataset Analysis and Processing</h1>      

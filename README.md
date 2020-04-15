@@ -3,7 +3,7 @@
 
 
 Steps:
-1. Open the main.py file in the final_codes_neede  folder
+1. Open the main.py file in the final_codes_needed folder
 2. Download the required python libraries
 3. Upload any .csv dataset, just make sure that the variable to be predicted is the last column of the dataset
 4. Upload the file in the UI
